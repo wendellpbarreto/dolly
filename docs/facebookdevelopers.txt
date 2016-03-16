@@ -1,0 +1,34 @@
+<!-- Abre caixa de dialogo na aplicação, para quando uma pessoa quer compartilhar algo
+acredito que não fique tão automatico -->
+
+Sharing - is triggered when someone clicks a social plugin
+(Share or Send button)
+	Share or Feed or Message Dialog
+		Links
+		Photos
+		Videos
+		Open Graph Stories
+			Customizable
+			Actions:
+				Like, Follow, Save, Publish
+				Or custom actions
+
+Graph API
+	Way to get data in and out
+	http requests
+	
+	<!-- Queria achar o que seria preciso por exemplo, para desejar feliz aniversario
+	automaticamente para amigos. -->
+
+	Root Nodes:
+		Event
+		Friend List
+		Group
+		Page
+		Profile
+		User
+
+	Common Scenarios
+		Publishing new Status Updates
+		Scheduling Posts for Pages
+		Responding to Events

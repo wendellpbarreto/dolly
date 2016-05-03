@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied, with: :access_denied
 
+  helper_method :current_user
+
+  def current_user
+    @current_user ||= FacebookUser.find(session[:user_id]) if session[:user_id]
+  end
+
   private
 
   def access_denied(exception)

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  # root 'welcome#index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
   devise_for :users
+  get '/oauth/callback' => 'o_auth#callback', as: :oauth_callback
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

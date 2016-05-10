@@ -3,10 +3,15 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.5'
 
+group :development, :test do
+  gem 'dotenv-rails', :require => 'dotenv/rails-now'
+end
+
 gem 'devise'
 gem 'rails_admin'
 gem 'cancancan', '~> 1.10'
 
+gem "koala", "~> 2.2"
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

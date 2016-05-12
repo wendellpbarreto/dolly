@@ -1,26 +1,27 @@
-<h2>Log in</h2>
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+            <h1 class="logo-name">DOLLY</h1>
+        </div>
+        <h3 class="text-navy"></h3>
+        <p></p>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group">
+                <%= f.email_field :email, autofocus: true, placeholder: "Username", class: "form-control" %>
+            </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+            <div class="form-group">
+                <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+            </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+            <div><%= f.submit "Entrar", class: "btn btn-primary block full-width m-b" %></div>
+            <% if devise_mapping.rememberable? -%>
+                <div><%= f.check_box :remember_me %> <%= f.label :'Lembre-se de mim' %></div>
+            <% end -%>
+            <%= link_to 'Login With Facebook', Koala::Facebook::OAuth.new.url_for_oauth_code(:callback => oauth_callback_url) %>
+
+        <% end %>
+        <%= render "devise/shared/links" %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315113534) do
+ActiveRecord::Schema.define(version: 20160510122633) do
 
   create_table "actions", force: :cascade do |t|
     t.string   "title",       default: "", null: false
@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 20160315113534) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "role_id"
+    t.string   "fb_id"
+    t.string   "fb_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

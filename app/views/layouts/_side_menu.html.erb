@@ -1,0 +1,35 @@
+<ul id="side-menu" class="nav">
+    <li class="nav-header">
+        <div class="dropdown profile-element">
+            <% if current_user %>
+                <span class="profile-photo" style="background-image: url('<%= current_user.photo.url rescue '' %>');"></span>
+            <% end %>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span class="clear">
+                    <span class="block m-t-xs">
+                        <strong class="font-bold">
+                            <%= current_user ? current_user.name.titleize : current_user.email  %>
+                        </strong>
+                    </span>
+                    <span class="text-muted text-xs block"><%= t(current_user.role.name) %><b class="caret"></b></span>
+                </span>
+            </a>
+            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                <li><%= link_to "Perfil", edit_user_registration_path(current_user), method: :get %></li>
+                <li><%= link_to "Mudar senha", edit_user_password_path(current_user) %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Sair", destroy_user_session_path, :method => :delete %></li>
+            </ul>
+        </div>
+        <div class="logo-element">
+            DOLLY
+        </div>
+    </li>
+
+    <li>
+        <a href="<%= root_path %>">
+            <i class="fa fa-th-large"></i>
+            <span class="nav-label">Dashboard</span>
+        </a>
+    </li>
+</ul>

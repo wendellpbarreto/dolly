@@ -22,5 +22,6 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
+<%= link_to 'Login With Facebook', Koala::Facebook::OAuth.new.url_for_oauth_code(:callback => oauth_callback_url) %>
+<br>
 <%= render "devise/shared/links" %>

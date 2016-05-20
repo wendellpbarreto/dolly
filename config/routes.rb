@@ -14,8 +14,15 @@ Rails.application.routes.draw do
   end
 
   resources :messages do
+  end
+
+  resources :friends, only: :index do
     collection do
-      get 'friends'
+      get :update_friends
+    end
+    member do
+      get :messages
+      get :liked_posts
     end
   end
 

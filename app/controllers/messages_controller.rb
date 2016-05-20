@@ -1,11 +1,6 @@
 class MessagesController < MainController
   before_filter :get_koala_graph
 
-  def friends
-    @profile = @graph.get_object("me")
-    @friends = @graph.get_connections("me", "friends")
-  end
-
   def index
     @messages = current_user.messages
   end

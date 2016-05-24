@@ -12,6 +12,9 @@ gem 'rails_admin'
 gem 'cancancan', '~> 1.10'
 
 gem "koala", "~> 2.2"
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'active_record-acts_as'
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

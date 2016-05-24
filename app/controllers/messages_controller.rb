@@ -27,9 +27,10 @@ class MessagesController < MainController
 
     message = current_user.messages.build friend: friend, action: action
     message.content = params[:message][:content]
+    message.when = params[:message][:when]
 
     if message.save
-      @graph.put_wall_post(message.content)
+      # @graph.put_wall_post(message.content)
     end
     redirect_to messages_path
   end

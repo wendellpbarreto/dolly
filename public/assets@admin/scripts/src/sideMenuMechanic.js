@@ -4,7 +4,8 @@ sideMenuMechanic = function() {
 
     if (openedMenu.length <= 0) {
         try {
-            openedMenu = $('a[href="' + /http:\/\/([a-zA-Z0-9:.]+)\/([a-zA-Z_]+)/g.exec(location.href)[0] + '"]');
+            openedMenu = $('a[href="' + location.pathname + '"]');
+            // openedMenu = $('a[href="' + /http:\/\/([a-zA-Z0-9:.]+)\/([a-zA-Z_]+)/g.exec(location.href)[0] + '"]');
         } catch(err) {
             console.log('[ERROR] At: engineSideMenu, err: ' + err);
         }

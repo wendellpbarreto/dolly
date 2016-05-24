@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get '/oauth/callback' => 'o_auth#callback', as: :oauth_callback
   devise_for :users
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: "main#dashboard"
   end
+
+  resources :sessions, only: [:destroy]
 
   unauthenticated do
     devise_scope :user do

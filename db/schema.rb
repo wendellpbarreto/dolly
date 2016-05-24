@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20160510122633) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "facebook_users", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "friends", force: :cascade do |t|
     t.string   "name",       default: "", null: false
     t.integer  "user_id"

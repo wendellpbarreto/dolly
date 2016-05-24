@@ -2,3 +2,20 @@
   <%= message.created_at %>
   <%= message.content %>
 <% end %>
+
+<div id="calendar">
+
+</div>
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<script>
+$(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar();
+
+});
+</script>

@@ -10,6 +10,8 @@ end
 gem 'devise'
 gem 'rails_admin'
 gem 'cancancan', '~> 1.10'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 gem "koala", "~> 2.2"
 

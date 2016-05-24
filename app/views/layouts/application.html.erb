@@ -1,23 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<<<<<<< HEAD
-  <title>Dolly</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div>
-  <% if current_user %>
-    Logado como <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Logar com o Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
-<%= yield %>
-=======
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index,follow">
@@ -121,9 +104,9 @@
         ga('create', 'UA-61454470-1', 'auto');
         ga('send', 'pageview');
     </script>
->>>>>>> 9fba62329a2573994f1c891639154ca631c10453
 
     <!-- scripts::rails -->
     <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application' %>
 </body>
 </html>

@@ -10,12 +10,10 @@ end
 gem 'devise'
 gem 'rails_admin'
 gem 'cancancan', '~> 1.10'
-<<<<<<< HEAD
-gem 'omniauth-facebook', '~> 1.4.1'
-=======
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 gem "koala", "~> 2.2"
->>>>>>> 9fba62329a2573994f1c891639154ca631c10453
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

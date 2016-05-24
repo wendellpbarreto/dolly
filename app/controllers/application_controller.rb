@@ -5,15 +5,14 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied, with: :access_denied
 
-<<<<<<< HEAD
-  helper_method :current_user
+# <<<<<<< HEAD
+#   helper_method :current_user
 
-  def current_user
-    @current_user ||= FacebookUser.find(session[:user_id]) if session[:user_id]
-  end
-=======
+#   def current_user
+#     @current_user ||= FacebookUser.find(session[:user_id]) if session[:user_id]
+#   end
+# =======
   layout :layout_by_resource
->>>>>>> 9fba62329a2573994f1c891639154ca631c10453
 
   private
 

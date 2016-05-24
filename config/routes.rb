@@ -1,23 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  # get 'sessions/create'
 
-  # get 'sessions/destroy'
-
-  # get 'home/show'
-
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
-
-  resources :sessions, only: [:create, :destroy]
-  resource :home, only: [:show]
-
-  root to: "home#show"
-
-  # root 'welcome#index'
-=======
->>>>>>> 9fba62329a2573994f1c891639154ca631c10453
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get '/oauth/callback' => 'o_auth#callback', as: :oauth_callback
   devise_for :users
@@ -25,6 +7,8 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: "main#dashboard"
   end
+
+  resources :sessions, only: [:destroy]
 
   unauthenticated do
     devise_scope :user do

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   # get 'sessions/create'
 
   # get 'sessions/destroy'
@@ -15,9 +16,35 @@ Rails.application.routes.draw do
   root to: "home#show"
 
   # root 'welcome#index'
+=======
+>>>>>>> 9fba62329a2573994f1c891639154ca631c10453
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
+  get '/oauth/callback' => 'o_auth#callback', as: :oauth_callback
   devise_for :users
+
+  authenticated :user do
+    root to: "main#dashboard"
+  end
+
+  unauthenticated do
+    devise_scope :user do
+      root to: "devise/sessions#new", :as => "unauthenticated"
+    end
+  end
+
+  resources :messages do
+  end
+
+  resources :friends, only: :index do
+    collection do
+      get :update_friends
+    end
+    member do
+      get :messages
+      get :liked_posts
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

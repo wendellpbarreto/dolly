@@ -13,6 +13,19 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :messages do
+  end
+
+  resources :friends, only: :index do
+    collection do
+      get :update_friends
+    end
+    member do
+      get :messages
+      get :liked_posts
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

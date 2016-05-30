@@ -1,7 +1,7 @@
 <div class="row  border-bottom white-bg dashboard-header">
     <div class="col-sm-3">
-        <h2>Welcome Admin</h2>
-        <small>Lorem Ipsum dolor</small>
+        <h2>Welcome <%= current_user ? current_user.name.titleize : current_user.email  %></h2>
+        <small>Check out what is scheduled</small>
         <ul class="list-group clear-list m-t">
             <li class="list-group-item fist-item">
                 <span class="pull-right">
@@ -38,5 +38,18 @@
 </div>
 
 <%= content_for :javascript do %>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            console.log("ready");
+            $('#calendar').fullCalendar({
+                events: [
+                  <% @messages.each do |message|  %>
+                    {
+                      start  : "<%= message.when.nil?? DateTime.now : message.when  %>"
+                    },
+                  <% end %>
+                ],
+            })
+        });
+    </script>
 <% end %>

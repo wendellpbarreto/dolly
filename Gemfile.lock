@@ -20,6 +20,9 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_record-acts_as (1.0.8)
+      activerecord (~> 4, >= 4.1.2)
+      activesupport (~> 4)
     activejob (4.2.5)
       activesupport (= 4.2.5)
       globalid (>= 0.3.0)
@@ -70,6 +73,10 @@ GEM
       multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.5.0.1)
       railties (>= 3.2, < 5.1)
+    fullcalendar-rails (2.6.1.0)
+      jquery-rails (>= 4.0.5, < 5.0.0)
+      jquery-ui-rails (>= 5.0.2)
+      momentjs-rails (>= 2.9.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -99,6 +106,8 @@ GEM
     mime-types (2.99.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    momentjs-rails (2.11.1)
+      railties (>= 3.1)
     multi_json (1.11.2)
     multipart-post (2.0.0)
     nested_form (0.3.2)
@@ -197,14 +206,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_record-acts_as
   byebug
   cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
   devise
   dotenv-rails
+  fullcalendar-rails
   jbuilder (~> 2.0)
   jquery-rails
   koala (~> 2.2)
+  momentjs-rails
   rails (= 4.2.5)
   rails_admin
   sass-rails (~> 5.0)

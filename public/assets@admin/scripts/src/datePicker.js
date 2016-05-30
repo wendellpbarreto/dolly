@@ -5,7 +5,7 @@ $(document).ready(function() {
 	    forceParse: false,
 	    autoclose: true
 	});
-	
+
 	$('.date').datepicker({
 		format: 'dd/mm/yyyy',
 	    todayBtn: "linked",

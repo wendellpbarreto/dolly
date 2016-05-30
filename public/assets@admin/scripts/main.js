@@ -231,7 +231,7 @@ $(document).ready(function() {
 	    forceParse: false,
 	    autoclose: true
 	});
-	
+
 	$('.date').datepicker({
 		format: 'dd/mm/yyyy',
 	    todayBtn: "linked",
@@ -241,6 +241,7 @@ $(document).ready(function() {
 	    autoclose: true
 	});
 })
+
 $(document).ready(function() {
     var answerDropZone = $("#new-answers-dropzone");
 
@@ -337,6 +338,7 @@ $.extend( $.validator.messages, {
 	ziprange: "O c&oacute;digo postal deve estar entre 902xx-xxxx e 905xx-xxxx",
 	cpfBR: "Por favor, forne&ccedil;a um CPF v&aacute;lido."
 } );
+
 $(document).ready(function () {
 
 	
@@ -1636,7 +1638,8 @@ sideMenuMechanic = function() {
 
     if (openedMenu.length <= 0) {
         try {
-            openedMenu = $('a[href="' + /http:\/\/([a-zA-Z0-9:.]+)\/([a-zA-Z_]+)/g.exec(location.href)[0] + '"]');
+            openedMenu = $('a[href="' + location.pathname + '"]');
+            // openedMenu = $('a[href="' + /http:\/\/([a-zA-Z0-9:.]+)\/([a-zA-Z_]+)/g.exec(location.href)[0] + '"]');
         } catch(err) {
             console.log('[ERROR] At: engineSideMenu, err: ' + err);
         }
@@ -1651,6 +1654,7 @@ sideMenuMechanic = function() {
 $(document).ready(function() {
     sideMenuMechanic();
 })
+
 $(document).on('click', '[data-order-the-table]', function(){
     ordenator = $(this);
     value = ordenator.attr('data-order-the-table');

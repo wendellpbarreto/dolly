@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524122101) do
+ActiveRecord::Schema.define(version: 20160531104054) do
 
   create_table "actions", force: :cascade do |t|
     t.string   "title",       default: "", null: false
@@ -28,6 +28,24 @@ ActiveRecord::Schema.define(version: 20160524122101) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "friend_hashtags", force: :cascade do |t|
+    t.integer  "friend_id"
+    t.integer  "hashtag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "friend_hashtags", ["hashtag_id"], name: "index_friend_hashtags_on_hashtag_id"
+
+  create_table "friend_reactions", force: :cascade do |t|
+    t.integer  "friend_id"
+    t.integer  "reaction_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "friend_reactions", ["reaction_id"], name: "index_friend_reactions_on_reaction_id"
+
   create_table "friends", force: :cascade do |t|
     t.string   "name",       default: "", null: false
     t.integer  "user_id"
@@ -36,6 +54,22 @@ ActiveRecord::Schema.define(version: 20160524122101) do
   end
 
   add_index "friends", ["user_id"], name: "index_friends_on_user_id"
+
+  create_table "hashtag_reactions", force: :cascade do |t|
+    t.integer  "hashtag_id"
+    t.integer  "reaction_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "hashtag_reactions", ["hashtag_id"], name: "index_hashtag_reactions_on_hashtag_id"
+  add_index "hashtag_reactions", ["reaction_id"], name: "index_hashtag_reactions_on_reaction_id"
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string   "content"
@@ -70,11 +104,28 @@ ActiveRecord::Schema.define(version: 20160524122101) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name",       default: "", null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "user_reactions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "reaction_id"
+    t.boolean  "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "user_reactions", ["reaction_id"], name: "index_user_reactions_on_reaction_id"
+  add_index "user_reactions", ["user_id"], name: "index_user_reactions_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "", null: false

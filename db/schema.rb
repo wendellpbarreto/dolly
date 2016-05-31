@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531012247) do
+ActiveRecord::Schema.define(version: 20160531104054) do
 
   create_table "actions", force: :cascade do |t|
     t.string   "title",       default: "", null: false
@@ -106,7 +106,6 @@ ActiveRecord::Schema.define(version: 20160531012247) do
 
   create_table "reactions", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -116,6 +115,17 @@ ActiveRecord::Schema.define(version: 20160531012247) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "user_reactions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "reaction_id"
+    t.boolean  "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "user_reactions", ["reaction_id"], name: "index_user_reactions_on_reaction_id"
+  add_index "user_reactions", ["user_id"], name: "index_user_reactions_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "", null: false

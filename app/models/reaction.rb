@@ -5,13 +5,19 @@ class Reaction < ActiveRecord::Base
   	has_many :friend_reaction
   	has_many :friends, through: :friend_reaction
 
+    has_many :user_reaction
+    has_many :users, through: :user_reaction
+
+
+    scope :from_user, ->(id){where(:user_id => id)}
+
   	def get_hashtags_formatted
     	hashtags_formatted = ""
     	self.hashtags.each_with_index do |htag, index|
-    		if index == self.hashtags.length
-	    		hashtags_formatted += htag.name + ", "
+    		if index == self.hashtags.length - 1
+	    		hashtags_formatted += htag.name 
 	    	else
-	    		hashtags_formatted += htag.name
+	    		hashtags_formatted += htag.name + ", "
 	    	end
 	    end
 

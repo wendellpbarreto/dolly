@@ -60,6 +60,15 @@ reaction = Reaction.create name: "Angry", status: false
 
 
 
+users = User.all()
+reactions = Reaction.all()
+users.each do |user|
+	reactions.each do |reaction|
+		UserReaction.create user:user reaction:reaction  status: false
+	end
+end
+
+
 
 
 

@@ -2,7 +2,7 @@ class ReactionsController < MainController
   before_filter :get_koala_graph
 
   def index
-    @reactions = Reaction.all
+    @reactions = Reaction.from_user(current_user)
     @friends = Friend.from_user(current_user)
     @tab_icons = ["fa-thumbs-up", "fa-heart", "fa-smile-o", "fa-hand-lizard-o", "fa-frown-o", "fa-meh-o"]
   end

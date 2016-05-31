@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'birthdays/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users
@@ -19,6 +21,9 @@ Rails.application.routes.draw do
   end
 
   resources :reactions do
+  end
+
+  resources :birthdays do
   end
 
   resources :friends, only: :index do

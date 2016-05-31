@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524122101) do
+ActiveRecord::Schema.define(version: 20160531004425) do
 
   create_table "actions", force: :cascade do |t|
     t.string   "title",       default: "", null: false
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(version: 20160524122101) do
   end
 
   add_index "friends", ["user_id"], name: "index_friends_on_user_id"
+
+  create_table "hashtag_reactions", force: :cascade do |t|
+    t.integer  "hashtag_id"
+    t.integer  "reaction_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "hashtag_reactions", ["hashtag_id"], name: "index_hashtag_reactions_on_hashtag_id"
+  add_index "hashtag_reactions", ["reaction_id"], name: "index_hashtag_reactions_on_reaction_id"
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string   "content"
@@ -68,6 +84,13 @@ ActiveRecord::Schema.define(version: 20160524122101) do
     t.text     "description"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "reactions", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|

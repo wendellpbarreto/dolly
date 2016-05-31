@@ -1,5 +1,4 @@
 class MessagesController < AdminController
-  before_filter :get_koala_graph
 
   def index
     @messages = current_user.messages
@@ -32,11 +31,5 @@ class MessagesController < AdminController
     if message.save
     end
     redirect_to messages_path
-  end
-
-  private
-
-  def get_koala_graph
-    @graph = Koala::Facebook::API.new(current_user.fb_token, ENV['FB_SECRET_KEY'].to_s)
   end
 end

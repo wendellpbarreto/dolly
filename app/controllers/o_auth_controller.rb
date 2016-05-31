@@ -6,7 +6,6 @@ class OAuthController < ApplicationController
         api = Koala::Facebook::API.new(access_token, ENV['FB_SECRET_KEY'].to_s)
         profile = api.get_object("me")
         auth = User.find_or_create_by(fb_id: profile["id"]) do |user|
-          user.fb_token = access_token
           user.name = profile["name"]
           user.role = Role.find_by(name: 'Admin')
         end

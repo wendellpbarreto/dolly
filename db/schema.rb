@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531104054) do
+ActiveRecord::Schema.define(version: 20160531133334) do
 
   create_table "actions", force: :cascade do |t|
     t.string   "title",       default: "", null: false
@@ -28,15 +28,6 @@ ActiveRecord::Schema.define(version: 20160531104054) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "friend_hashtags", force: :cascade do |t|
-    t.integer  "friend_id"
-    t.integer  "hashtag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "friend_hashtags", ["hashtag_id"], name: "index_friend_hashtags_on_hashtag_id"
-
   create_table "friend_reactions", force: :cascade do |t|
     t.integer  "friend_id"
     t.integer  "reaction_id"
@@ -51,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160531104054) do
     t.integer  "user_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "fb_id"
   end
 
   add_index "friends", ["user_id"], name: "index_friends_on_user_id"
@@ -73,16 +65,12 @@ ActiveRecord::Schema.define(version: 20160531104054) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "content"
-    t.integer  "action_id"
-    t.integer  "user_id"
     t.integer  "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "messages", ["action_id"], name: "index_messages_on_action_id"
   add_index "messages", ["friend_id"], name: "index_messages_on_friend_id"
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "permission_roles", force: :cascade do |t|
     t.integer  "permission_id"
@@ -103,6 +91,15 @@ ActiveRecord::Schema.define(version: 20160531104054) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  create_table "posts", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "posts", ["friend_id"], name: "index_posts_on_friend_id"
 
   create_table "reactions", force: :cascade do |t|
     t.string   "name"

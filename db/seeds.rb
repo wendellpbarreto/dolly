@@ -22,31 +22,32 @@ User.create name: "Admin", email: "admin@mail.com", password: "password", role: 
 HashtagReaction.destroy_all
 Hashtag.destroy_all
 Reaction.destroy_all
+UserReaction.destroy_all
 
 hashtag = Hashtag.create name: "#foraDilma"
-reaction = Reaction.create name: "Like", status: false
+reaction = Reaction.create name: "Like"
 reaction.hashtags.push hashtag
 reaction.save
 
 hashtag = Hashtag.create name: "#foraTemer"
 
 hashtag = Hashtag.create name: "#foraLula"
-reaction = Reaction.create name: "Love", status: false
+reaction = Reaction.create name: "Love"
 reaction.hashtags.push hashtag
 reaction.save
 
 hashtag = Hashtag.create name: "#foraObama"
-reaction = Reaction.create name: "Haha", status: false
+reaction = Reaction.create name: "Haha"
 reaction.hashtags.push hashtag
 reaction.save
 
 hashtag = Hashtag.create name: "#foraNeymar"
-reaction = Reaction.create name: "Wow", status: false
+reaction = Reaction.create name: "Wow"
 reaction.hashtags.push hashtag
 reaction.save
 
 hashtag = Hashtag.create name: "#foraCunha"
-reaction = Reaction.create name: "Sad", status: false
+reaction = Reaction.create name: "Sad"
 reaction.hashtags.push hashtag
 reaction.save
 
@@ -56,17 +57,17 @@ reaction.save
 
 hashtag = Hashtag.create name: "#foraTodos"
 
-reaction = Reaction.create name: "Angry", status: false
+reaction = Reaction.create name: "Angry"
 
 
 
 users = User.all()
 reactions = Reaction.all()
 users.each do |user|
-	reactions.each do |reaction|
-		UserReaction.create user:user reaction:reaction  status: false
-	end
+	user.reactions += reactions
+  user.save
 end
+UserReaction.all.update_all(status: false)
 
 
 

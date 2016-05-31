@@ -1,4 +1,4 @@
-class MessagesController < MainController
+class MessagesController < AdminController
   before_filter :get_koala_graph
 
   def index
@@ -30,7 +30,6 @@ class MessagesController < MainController
     message.when = params[:message][:when]
 
     if message.save
-      # @graph.put_wall_post(message.content)
     end
     redirect_to messages_path
   end

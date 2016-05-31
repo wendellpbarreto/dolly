@@ -1,20 +1,16 @@
 # == Schema Information
 #
-# Table name: messages
+# Table name: posts
 #
 #  id         :integer          not null, primary key
-#  content    :string
+#  content    :text
 #  friend_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Message < ActiveRecord::Base
+class Post < ActiveRecord::Base
   acts_as :event
 
-  belongs_to :action
-  belongs_to :user
   belongs_to :friend
-
-  validates :action, :user, :friend, presence: true
 end

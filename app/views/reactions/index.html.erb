@@ -2,42 +2,19 @@
     <div class="col-lg-12">
         <h2>Reactions</h2>
     </div>
-    <div class="col-lg-2 m-t-md">
-        <% for i in 0..(@reactions.length-1)/2 %>
-            <div>
-                <input type="checkbox" id="reaction-<%= @reactions[i].name.downcase %>" class="reaction-checkbox" <%= 'checked' if @reactions[i].status %>>
-                <h5 class="inline"><%= @reactions[i].name %><h5>
-            </div>
-        <% end %>
-        <!-- <div>
-            <input type="checkbox" id="reaction-love" class="reaction-checkbox" checked>
-            <h5 class="inline">Love<h5>
+    <%= @reactions.size %>
+    <% @reactions.each_slice(3) do |reactions_slice| %>
+        <div class="col-lg-2 m-t-md">
+            <% reactions_slice.each do |reaction| %>
+                <div>
+                    <input type="checkbox" id="reaction-<%= reaction.name.downcase %>" class="reaction-checkbox" <%= 'checked' if @user_reactions.include?(reaction) %>>
+                    <h5 class="inline"><%= reaction.name %><h5>
+                </div>
+            <% end %>
         </div>
-        <div>
-            <input type="checkbox" id="reaction-haha" class="reaction-checkbox" checked>
-            <h5 class="inline">Haha<h5>
-        </div> -->
-    </div>
-    <div class="col-lg-2 m-t-md">
-        <% for i in (@reactions.length)/2..(@reactions.length-1) %>
-            <div>
-                <input type="checkbox" id="reaction-<%= @reactions[i].name.downcase %>" class="reaction-checkbox" <%= 'checked' if @reactions[i].status %>>
-                <h5 class="inline"><%= @reactions[i].name %><h5>
-            </div>
-        <% end %>
-        <!-- <div>
-            <input type="checkbox" id="reaction-wow" class="reaction-checkbox" checked>
-            <h5 class="inline">Wow<h5>
-        </div>
-        <div>
-            <input type="checkbox" id="reaction-sad" class="reaction-checkbox" checked>
-            <h5 class="inline">Sad<h5>
-        </div>
-        <div>
-            <input type="checkbox" id="reaction-angry" class="reaction-checkbox" checked>
-            <h5 class="inline">Angry<h5>
-        </div> -->
-    </div>
+    <% end %>
+
+
     <div class="col-lg-8">
         <div class="tabs-container">
             <ul class="nav nav-tabs">

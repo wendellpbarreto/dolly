@@ -1,9 +1,9 @@
 <div class="file-manager">
-    <a class="btn btn-block btn-primary compose-mail" href="<%= new_message_path %>">Write Message</a>
+    <a class="btn btn-block btn-primary compose-mail" href="<%= new_post_path %>">Write Post</a>
     <div class="space-25"></div>
     <h5>Folders</h5>
     <ul class="folder-list m-b-md" style="padding: 0">
-        <li><a href="#"> <i class="fa fa-inbox "></i> Scheduled <span class="label label-danger pull-right"><%= @messages.size %></span> </a></li>
+        <li><a href="#"> <i class="fa fa-inbox "></i> Scheduled <span class="label label-danger pull-right"><%= @posts.size %></span> </a></li>
         <li><a href="#"> <i class="fa fa-envelope-o"></i> Posted</a></li>
         <li><a href="#"> <i class="fa fa-certificate"></i> Top Commented</a></li>
         <li><a href="#"> <i class="fa fa-file-text-o"></i> Top Reacted</a></li>

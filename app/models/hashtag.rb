@@ -1,7 +1,17 @@
-class Hashtag < ActiveRecord::Base
-	has_many :hashtag_reaction
-	has_many :reactions, through: :hashtag_reaction
+# == Schema Information
+#
+# Table name: hashtags
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 
-	has_many :friend_hashtag
-  	has_many :friends, through: :friend_hashtag
+class Hashtag < ActiveRecord::Base
+	has_many :hashtag_reactions
+	has_many :reactions, through: :hashtag_reactions
+
+	has_many :friend_hashtags
+  has_many :friends, through: :friend_hashtags
 end

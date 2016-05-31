@@ -51,7 +51,6 @@ reaction.hashtags.push hashtag
 reaction.save
 
 hashtag = Hashtag.create name: "#foraSarney"
-reaction = Reaction.create name: "Love", status: false
 reaction.hashtags.push hashtag
 reaction.save
 

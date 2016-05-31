@@ -9,4 +9,8 @@ class Friend < ActiveRecord::Base
   has_many :hashtags, through: :friend_hashtag
 
   validates :user, presence: true
+
+
+  scope :from_user, ->(id){where(:user_id => id)}
+
 end

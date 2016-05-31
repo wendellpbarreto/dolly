@@ -3,21 +3,29 @@
         <h2>Reactions</h2>
     </div>
     <div class="col-lg-2 m-t-md">
-        <div>
-            <input type="checkbox" id="reaction-like" class="reaction-checkbox" checked>
-            <h5 class="inline">Like<h5>
-        </div>
-        <div>
+        <% for i in 0..(@reactions.length-1)/2 %>
+            <div>
+                <input type="checkbox" id="reaction-<%= @reactions[i].name.downcase %>" class="reaction-checkbox" <%= 'checked' if @reactions[i].status %>>
+                <h5 class="inline"><%= @reactions[i].name %><h5>
+            </div>
+        <% end %>
+        <!-- <div>
             <input type="checkbox" id="reaction-love" class="reaction-checkbox" checked>
             <h5 class="inline">Love<h5>
         </div>
         <div>
             <input type="checkbox" id="reaction-haha" class="reaction-checkbox" checked>
             <h5 class="inline">Haha<h5>
-        </div>
+        </div> -->
     </div>
     <div class="col-lg-2 m-t-md">
-        <div>
+        <% for i in (@reactions.length)/2..(@reactions.length-1) %>
+            <div>
+                <input type="checkbox" id="reaction-<%= @reactions[i].name.downcase %>" class="reaction-checkbox" <%= 'checked' if @reactions[i].status %>>
+                <h5 class="inline"><%= @reactions[i].name %><h5>
+            </div>
+        <% end %>
+        <!-- <div>
             <input type="checkbox" id="reaction-wow" class="reaction-checkbox" checked>
             <h5 class="inline">Wow<h5>
         </div>
@@ -28,25 +36,29 @@
         <div>
             <input type="checkbox" id="reaction-angry" class="reaction-checkbox" checked>
             <h5 class="inline">Angry<h5>
-        </div>
+        </div> -->
     </div>
     <div class="col-lg-8">
         <div class="tabs-container">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#tab-1"> <i class="fa fa-thumbs-up"></i></a></li>
-                <li class=""><a data-toggle="tab" href="#tab-2"> <i class="fa fa-heart"></i></a></li>
+                <% @reactions.each_with_index do |reaction, index| %>
+                    <li class="<%= 'active' if index == 0 %>"><a data-toggle="tab" href="#tab-<%= index %>"> <i class="fa <%= @tab_icons[index] %>"></i></a></li>
+                <% end %>
+                <!-- <li class=""><a data-toggle="tab" href="#tab-2"> <i class="fa fa-heart"></i></a></li>
                 <li class=""><a data-toggle="tab" href="#tab-3"> <i class="fa fa-smile-o"></i></a></li>
                 <li class=""><a data-toggle="tab" href="#tab-4"><i class="fa fa-hand-lizard-o"></i></a></li>
                 <li class=""><a data-toggle="tab" href="#tab-5"><i class="fa fa-frown-o"></i></a></li>
-                <li class=""><a data-toggle="tab" href="#tab-6"><i class="fa fa-meh-o"></i></a></li>
+                <li class=""><a data-toggle="tab" href="#tab-6"><i class="fa fa-meh-o"></i></a></li> -->
             </ul>
             <div class="tab-content">
-                <div id="tab-1" class="tab-pane active">
-                    <div class="panel-body">
-                        <textarea class="form-control h-100">#hashtag1, #hashtag2, #hashtag3, #hashtag4, #hashtag5, #hashtag6</textarea>
+                <% @reactions.each_with_index do |reaction, index| %>
+                    <div id="tab-<%= index %>" class="tab-pane <%= 'active' if index == 0 %>">
+                        <div class="panel-body">
+                            <textarea class="form-control h-100"><%= reaction.get_hashtags_formatted() %></textarea>
+                        </div>
                     </div>
-                </div>
-                <div id="tab-2" class="tab-pane">
+                <% end %>
+                <!-- <div id="tab-2" class="tab-pane">
                     <div class="panel-body">
                         <textarea class="form-control h-100">#hashtag1, #hashtag2, #hashtag3, #hashtag4, #hashtag5, #hashtag6</textarea>
                     </div>
@@ -70,7 +82,7 @@
                     <div class="panel-body">
                         <textarea class="form-control h-100">#hashtag1, #hashtag2, #hashtag3, #hashtag4, #hashtag5, #hashtag6</textarea>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -93,10 +105,10 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <select name="" id="" class="chosen-select" placeholder="Select a Friend">
-                                                <option value="">Select a Friend</option>
-                                                <option value="">Josefino</option>
-                                                <option value="">Mariana Costa</option>
-                                                <option value="">Caroline Pinheiro</option>
+                                                <option value="-1">Select a Friend</option>
+                                                <% @friends.each do |friend| %>
+                                                    <option value="<%= friend.id %>"><%= friend.name %></option>
+                                                <% end %>
                                             </select>
                                         </div>
                                         <div class="form-group">

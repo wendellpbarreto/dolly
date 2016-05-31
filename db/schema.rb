@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531004425) do
+ActiveRecord::Schema.define(version: 20160531012247) do
 
   create_table "actions", force: :cascade do |t|
     t.string   "title",       default: "", null: false
@@ -27,6 +27,24 @@ ActiveRecord::Schema.define(version: 20160531004425) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "friend_hashtags", force: :cascade do |t|
+    t.integer  "friend_id"
+    t.integer  "hashtag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "friend_hashtags", ["hashtag_id"], name: "index_friend_hashtags_on_hashtag_id"
+
+  create_table "friend_reactions", force: :cascade do |t|
+    t.integer  "friend_id"
+    t.integer  "reaction_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "friend_reactions", ["reaction_id"], name: "index_friend_reactions_on_reaction_id"
 
   create_table "friends", force: :cascade do |t|
     t.string   "name",       default: "", null: false

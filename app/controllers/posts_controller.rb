@@ -5,6 +5,8 @@ class PostsController < AdminController
   end
 
   def new
+    @posts = current_user.posts
+
     @post = Post.new
   end
 

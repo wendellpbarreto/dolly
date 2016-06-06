@@ -1,0 +1,33 @@
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content mailbox-content">
+                    <%= render 'aside' %>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 animated fadeInRight">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%= content_for :javascript do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            console.log("ready");
+            $('#calendar').fullCalendar({
+                events: [
+                  <% @posts.each do |post|  %>
+                    { start  : "<%= post.when.nil?? DateTime.now : post.when  %>" },
+                  <% end %>
+                ],
+            })
+        });
+    </script>
+<% end %>

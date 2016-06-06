@@ -1,11 +1,12 @@
-class MessagesController < MainController
-  before_filter :get_koala_graph
+class MessagesController < AdminController
 
   def index
     @messages = current_user.messages
   end
 
   def new
+    @messages = current_user.messages
+
     @message = Message.new
   end
 
@@ -16,28 +17,13 @@ class MessagesController < MainController
       friend.name = "My Friend Name"
       friend.save
     end
-    action = Action.all.first
-    if action == nil
-      action = Action.new
-      action.title = "action"
-      action.description = "My action"
-      action.save
-    end
 
-
-    message = current_user.messages.build friend: friend, action: action
+    message = current_user.messages.build friend: friend
     message.content = params[:message][:content]
     message.when = params[:message][:when]
 
     if message.save
-      # @graph.put_wall_post(message.content)
     end
     redirect_to messages_path
-  end
-
-  private
-
-  def get_koala_graph
-    @graph = Koala::Facebook::API.new(current_user.fb_token, ENV['FB_SECRET_KEY'].to_s)
   end
 end

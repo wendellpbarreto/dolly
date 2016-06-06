@@ -1,4 +1,4 @@
-class MainController < ApplicationController
+class MainController < AdminController
   before_filter :authenticate_user!
 
   def dashboard

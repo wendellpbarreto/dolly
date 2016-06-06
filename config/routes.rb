@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+
   get 'birthdays/index'
+
+  get 'posts/index'
+
+  get 'posts/new'
+
+  get 'posts/create'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -15,6 +22,9 @@ Rails.application.routes.draw do
     devise_scope :user do
       root to: "devise/sessions#new", :as => "unauthenticated"
     end
+  end
+
+  resources :posts do
   end
 
   resources :messages do

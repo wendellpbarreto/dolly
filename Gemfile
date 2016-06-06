@@ -10,6 +10,7 @@ end
 gem 'devise'
 gem 'rails_admin'
 gem 'cancancan', '~> 1.10'
+gem 'annotate'
 
 gem "koala", "~> 2.2"
 gem 'fullcalendar-rails'

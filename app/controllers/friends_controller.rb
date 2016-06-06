@@ -1,12 +1,9 @@
-class FriendsController < ApplicationController
+class FriendsController < AdminController
   ##Collection
   def update_friends
-    @profile = @graph.get_object("me")
-    @friends = @graph.get_connections("me", "taggable_friends")
   end
 
   def index
-    @friends = current_user.friends
   end
 
 

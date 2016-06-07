@@ -1,0 +1,58 @@
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content mailbox-content">
+                    <%= render 'aside' %>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 animated fadeInRight">
+            <div class="mail-box-header">
+                <div class="pull-right tooltip-demo">
+                    <a href="<%= messages_path %>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
+                    <a href="<%= messages_path %>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
+                </div>
+                <h2>
+                    Write Post
+                </h2>
+            </div>
+            <div class="mail-box">
+                <%= form_for @birthday_message, html: {class: 'form-horizontal'} do |f| %>
+                <div class="mail-body">
+                    <div class="form-group">
+                        <select name="" id="" class="chosen-select" placeholder="Select a Friend">
+                            <option value="">Select a Friend</option>
+                            <option value="">Josefino</option>
+                            <option value="">Mariana Costa</option>
+                            <option value="">Caroline Pinheiro</option>
+                            <option value="">José Dias</option>
+                            <option value="">Franklyn Bastos</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mail-body h-200">
+                    <div class="summernote">
+                        <%= f.text_area :content, :class => 'form-control h-200', placeholder: 'What should we post?' %>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="mail-body text-right tooltip-demo">
+                    <%= f.button "<i class='fa fa-reply'></i> Schedule Wish".html_safe, :class => 'btn btn-sm btn-primary', title: "Schedule Wish", data: {toggle: "tooltip", placement: "top" } %>
+                    <a href="<%= birthdays_path %>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
+                    <a href="<%= birthdays_path %>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
+                </div>
+                <% end %>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%= content_for :javascript do %>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#post_when').datetimepicker({});
+})
+</script>
+<% end %>

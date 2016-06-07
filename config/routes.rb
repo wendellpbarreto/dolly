@@ -34,6 +34,10 @@ Rails.application.routes.draw do
   end
 
   resources :birthdays do
+    collection do
+      get 'scheduled'
+      get 'saved'
+    end
   end
 
   resources :friends, only: :index do

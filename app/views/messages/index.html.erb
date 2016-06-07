@@ -24,9 +24,15 @@
             $('#calendar').fullCalendar({
                 events: [
                   <% @messages.each do |message|  %>
-                    { start  : "<%= message.when.nil?? DateTime.now : message.when  %>" },
+                    {
+                        start  : "<%= message.when.nil?? DateTime.now : message.when  %>",
+                        description: '<%= message.content %>'
+                    },
                   <% end %>
                 ],
+                // eventClick: function(calEvent, jsEvent, view) {
+                //     alert('Event: ' + calEvent.description);
+                // }
             })
         });
     </script>

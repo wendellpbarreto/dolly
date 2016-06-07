@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20160531133334) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "facebook_users", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "friend_reactions", force: :cascade do |t|
     t.integer  "friend_id"
     t.integer  "reaction_id"

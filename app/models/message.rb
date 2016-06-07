@@ -12,8 +12,7 @@
 class Message < ActiveRecord::Base
   acts_as :event
 
-  belongs_to :user
   belongs_to :friend
 
-  validates :user, :friend, presence: true
+  validates :friend, presence: true
 end

@@ -19,6 +19,7 @@
             </div>
             <div class="mail-box">
                 <%= form_for @birthday_message, html: {class: 'form-horizontal'} do |f| %>
+                <%= f.hidden_field :kind, value: :birthday %>
                 <div class="mail-body">
                     <div class="form-group">
                         <select name="" id="" class="chosen-select" placeholder="Select a Friend">

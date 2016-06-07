@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607004920) do
+ActiveRecord::Schema.define(version: 20160607120009) do
 
   create_table "actions", force: :cascade do |t|
     t.string   "title",       default: "", null: false
@@ -68,7 +68,8 @@ ActiveRecord::Schema.define(version: 20160607004920) do
     t.integer  "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "type"
+    t.string   "title"
+    t.string   "kind"
   end
 
   add_index "messages", ["friend_id"], name: "index_messages_on_friend_id"
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(version: 20160607004920) do
     t.integer  "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "title"
   end
 
   add_index "posts", ["friend_id"], name: "index_posts_on_friend_id"

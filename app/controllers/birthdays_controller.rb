@@ -8,11 +8,11 @@ class BirthdaysController < ApplicationController
   end
 
   def scheduled
-    @scheduled_messages = current_user.messages.where(type: 'birthday').to_a
+    @scheduled_messages = current_user.messages.where(kind: 'birthday').to_a
   end
 
   def saved
-    @saved_messages = current_user.messages.where(type: 'birthday').to_a
+    @saved_messages = current_user.messages.where(kind: 'birthday').to_a
   end
 
   def create
@@ -26,7 +26,7 @@ class BirthdaysController < ApplicationController
     birthday_message = current_user.messages.build friend: friend
     birthday_message.content = params[:birthday_message][:content]
     birthday_message.when = friend.birthday
-    birthday_message.type = "birthday"
+    birthday_message.kind = "birthday"
 
     if birthday_message.save
     end

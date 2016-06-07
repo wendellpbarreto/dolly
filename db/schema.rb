@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160607120009) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "title"
+    t.string   "kind"
   end
 
   add_index "messages", ["friend_id"], name: "index_messages_on_friend_id"

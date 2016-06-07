@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'birthdays/index'
+
   get 'posts/index'
 
   get 'posts/new'
@@ -28,6 +31,13 @@ Rails.application.routes.draw do
   end
 
   resources :reactions do
+  end
+
+  resources :birthdays do
+    collection do
+      get 'scheduled'
+      get 'saved'
+    end
   end
 
   resources :friends, only: :index do

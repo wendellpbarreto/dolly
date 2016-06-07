@@ -15,5 +15,6 @@ class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend
 
-  validates :user, :friend, presence: true
+  # validates :user, :friend, presence: true
+  validates :friend, presence: true
 end

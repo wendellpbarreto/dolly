@@ -12,4 +12,18 @@ class ReactionsController < AdminController
   def create
 
   end
+
+  def trigger
+    reaction = Reaction.find(params[:reaction].to_i)
+    user_reaction = UserReaction.where(user: current_user, reaction: reaction).first
+    if user_reaction
+      user_reaction.destroy
+    else
+      UserReaction.create(user: current_user, reaction: reaction)
+    end
+
+    respond_to do |format|
+      format.json { head :ok }
+    end
+  end
 end

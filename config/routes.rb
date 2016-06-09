@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   end
 
   resources :reactions do
+    collection do
+      post :trigger
+    end
   end
 
   resources :birthdays do

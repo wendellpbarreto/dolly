@@ -2,13 +2,14 @@
     <div class="col-lg-12">
         <h2>Reactions</h2>
     </div>
-    <%= @reactions.size %>
     <% @reactions.each_slice(3) do |reactions_slice| %>
         <div class="col-lg-2 m-t-md">
             <% reactions_slice.each do |reaction| %>
                 <div>
-                    <input type="checkbox" id="reaction-<%= reaction.name.downcase %>" class="reaction-checkbox" <%= 'checked' if @user_reactions.include?(reaction) %>>
-                    <h5 class="inline"><%= reaction.name %><h5>
+                    <form class="reaction-form" action="<%=  trigger_reactions_path %>" method="post">
+                        <input name="reaction" type="checkbox" id="reaction-<%= reaction.name.downcase %>" class="reaction-checkbox" <%= 'checked' if @user_reactions.include?(reaction) %> value="<%= reaction.id %>">
+                        <h5 class="inline"><%= reaction.name %><h5>
+                    </form>
                 </div>
             <% end %>
         </div>
@@ -293,5 +294,35 @@
     var reactionWow = new Switchery($('#reaction-wow')[0], { color: '#1AB394' });
     var reactionSad = new Switchery($('#reaction-sad')[0], { color: '#1AB394' });
     var reactionAngry = new Switchery($('#reaction-angry')[0], { color: '#1AB394' });
+
+    $(document).ready(function() {
+
+        $('input[name=reaction]').change(function(event) {
+            console.log('changed')
+            form = $(this).closest('form');
+
+            var formData = {
+                'reaction'              : form.find('input[name=reaction]').val(),
+            };
+
+            var url = form.attr('action');
+
+            $.ajax({
+                type        : 'post', // define the type of HTTP verb we want to use (POST for our form)
+                url         : url, // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                            encode          : true
+            })
+                .done(function(data) {
+
+                    console.log(data);
+
+                });
+
+            event.preventDefault();
+        });
+
+    });
 </script>
 <% end %>
